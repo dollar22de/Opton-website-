@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10090d">
+<title>GIFTS OPTION</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ min-height:100vh;
+ overflow-x:hidden;
+ background:radial-gradient(circle at center,#32101e,#10090d 65%,#050405);
+ color:white;
+ font-family:Tahoma,Arial,sans-serif;
+ text-align:center;
+}
+#rain{
+ position:fixed;
+ inset:0;
+ overflow:hidden;
+ pointer-events:none;
+ z-index:1;
+}
+.gift{
+ position:absolute;
+ top:-100px;
+ width:65px;
+ height:65px;
+ object-fit:contain;
+ animation:fall linear forwards;
+ filter:drop-shadow(0 0 9px #ff315766);
+}
+@keyframes fall{
+ 0%{transform:translateY(-100px) rotate(0deg);opacity:0}
+ 10%{opacity:.9}
+ 100%{transform:translateY(115vh) rotate(360deg);opacity:0}
+}
+main{
+ position:relative;
+ z-index:2;
+ padding:25px 16px 50px;
+ max-width:550px;
+ margin:auto;
+}
+.logo{
+ width:min(85%,340px);
+ margin:15px auto 5px;
+ display:block;
+ border-radius:15px;
+ animation:float 4s ease-in-out infinite;
+ filter:drop-shadow(0 0 22px #ed315566);
+}
+@keyframes float{
+ 50%{transform:translateY(-9px)}
+}
+h1{
+ color:#ff405e;
+ font-size:32px;
+ text-shadow:0 0 20px #f12e4e;
+ letter-spacing:2px;
+}
+.headline{
+ font-size:21px;
+ font-weight:bold;
+ line-height:1.8;
+}
+.sub{
+ color:#ff9caf;
+ line-height:2;
+ font-size:15px;
+}
+.welcome{
+ margin:18px auto;
+ padding:13px;
+ border:1px solid #ed4260;
+ border-radius:14px;
+ background:#28101b;
+ color:#ffd9e1;
+ font-size:14px;
+}
+.slogan{
+ color:#ff7188;
+ font-weight:bold;
+ margin:20px 0;
+}
+.buttons{
+ display:grid;
+ gap:13px;
+ margin:25px auto;
+}
+.btn{
+ padding:16px;
+ border-radius:14px;
+ text-decoration:none;
+ color:white;
+ font-weight:bold;
+ font-size:16px;
+ transition:.2s;
+}
+.btn:active{transform:scale(.96)}
+.owner{
+ background:linear-gradient(120deg,#fa3656,#a90f31);
+}
+.channel{
+ background:linear-gradient(120deg,#55235e,#25132f);
+ border:1px solid #a65cbb;
+}
+.panel{
+ margin-top:28px;
+ padding:22px;
+ border-radius:20px;
+ background:#1c1019e8;
+ border:1px solid #9e344e;
+ box-shadow:0 0 25px #0008;
+}
+.panel h2{color:#ff7188}
+.panel p{
+ line-height:2;
+ color:#e9d7de;
+}
+button{
+ padding:14px 23px;
+ border-radius:12px;
+ border:1px solid #ff7087;
+ background:#401321;
+ color:white;
+ font-weight:bold;
+ font-size:15px;
+ cursor:pointer;
+}
+.secret{
+ display:none;
+ padding:15px;
+ margin-top:15px;
+ background:#351020;
+ border-radius:12px;
+ color:#ffdce3;
+ line-height:2;
+}
+.secret.show{display:block}
+footer{
+ margin-top:25px;
+ color:#a58b96;
+ font-size:12px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="rain"></div>
+
+<main>
+
+<!-- ضع صورة شعارك باسم logo.jpg -->
+<img src="logo.jpg" class="logo" alt="GIFTS OPTION">
+
+<h1>GIFTS OPTION</h1>
+
+<div class="headline">
+سوبر لبيع الهدايا والمعرّفات
+</div>
+
+<div class="sub">
+مزادات يومية • فعاليات مستمرة كل يوم
+</div>
+
+<div class="welcome" id="welcome">
+أهلاً بك في OPTION ❤️
+</div>
+
+<div class="slogan">
+الأقوى على الإطلاق... بحضوركم نكتمل!
+</div>
+
+<div class="buttons">
+
+<a class="btn owner"
+href="https://t.me/xxc2xx"
+target="_blank">
+♛ تواصل مع مالك المزاد
+</a>
+
+<a class="btn channel"
+href="https://t.me/Gift_ee"
+target="_blank">
+➤ دخول قناة OPTION والمزاد
+</a>
+
+</div>
+
+<div class="panel">
+<h2>✦ عالم OPTION ✦</h2>
+
+<p>
+هدايا تيليجرام المطوّرة، معرّفات مميزة،
+مزادات يومية وفعاليات متجددة.
+كل يوم فرصة جديدة وتجربة مختلفة.
+</p>
+
+<button onclick="openSecret()">
+🔐 اكتشف المفاجأة
+</button>
+
+<div class="secret" id="secret">
+🎁 السر انكشف!
+
+OPTION مو مجرد مزاد...
+إنه عالم يجمع الهدايا والندرة والمنافسة.
+
+تابع قناتنا حتى لا تفوتك المفاجآت!
+</div>
+</div>
+
+<footer>
+OPTION © — أهلاً بكم في عالم الهدايا والمزادات
+</footer>
+
+</main>
+
+<script>
+
+// صور الهدايا المطورة
+// ضع صور الهدايا داخل مجلد gifts
+// وسمّها 1.jpg إلى 20.jpg
+
+const gifts=[];
+
+for(let i=1;i<=20;i++){
+ gifts.push("gifts/"+i+".jpg");
+}
+
+function dropGift(){
+ const el=document.createElement("img");
+ el.className="gift";
+
+ el.src=gifts[Math.floor(Math.random()*gifts.length)];
+
+ el.style.left=Math.random()*100+"vw";
+ el.style.width=(35+Math.random()*40)+"px";
+ el.style.height=el.style.width;
+
+ const duration=7+Math.random()*9;
+ el.style.animationDuration=duration+"s";
+
+ el.onerror=()=>el.remove();
+
+ document.getElementById("rain").appendChild(el);
+
+ setTimeout(()=>el.remove(),duration*1000);
+}
+
+const mobile=window.innerWidth<600;
+
+for(let i=0;i<(mobile?12:22);i++){
+ setTimeout(dropGift,i*250);
+}
+
+setInterval(dropGift,mobile?650:430);
+
+// رسائل ترحيب متغيرة
+
+const messages=[
+"أهلاً بك في OPTION ❤️",
+"نورت عالم الهدايا المطوّرة 💎",
+"كل يوم مزاد جديد وفرصة جديدة 🔥",
+"أهلاً بك بين أهل OPTION 👑",
+"التميز يبدأ من هنا... OPTION"
+];
+
+document.getElementById("welcome").textContent=
+messages[Math.floor(Math.random()*messages.length)];
+
+// المفاجأة السرية
+
+function openSecret(){
+ document.getElementById("secret").classList.toggle("show");
+}
+
+// الضغط على الشعار خمس مرات
+
+let taps=0;
+document.querySelector(".logo").onclick=()=>{
+ taps++;
+ if(taps>=5){
+  taps=0;
+  document.getElementById("secret").classList.add("show");
+  alert("🎁 اكتشفت السر! أهلاً بك في OPTION");
+ }
+};
+
+</script>
+
+</body>
+</html>
